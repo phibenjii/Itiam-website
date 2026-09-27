@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ITIAM | IAM Consulting</title>
+    <title>ITIAM | Identity & Access Management Consulting</title>
+
+    <meta name="description"
+          content="ITIAM provides Identity & Access Management consulting with a strong focus on One Identity Manager, IAM architecture, implementation and integration.">
+
+    <link rel="icon" type="image/png" href="logo-square.png">
 
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -16,344 +23,1515 @@
         }
 
         body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
-            background: #010D1B;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: #010b17;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        /* HEADER */
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
-            height: 90px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(1, 15, 31, 0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(0, 217, 255, 0.12);
+        }
+
+        .nav {
+            min-height: 76px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 6%;
-
-            background: #01244E;
-            border-bottom: 1px solid rgba(0, 200, 255, 0.15);
-
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
-        .header-logo {
-            height: 62px;
-            width: 62px;
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            width: 52px;
+            height: 52px;
             object-fit: contain;
         }
 
         nav {
             display: flex;
-            gap: 35px;
+            align-items: center;
+            gap: 32px;
         }
 
         nav a {
-            color: white;
+            color: #d9e8f5;
             text-decoration: none;
-            font-size: 16px;
-            transition: 0.2s;
+            font-size: 15px;
+            font-weight: 500;
+
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: #00D9FF;
+            color: #00d9ff;
         }
 
 
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            min-height: calc(100vh - 90px);
+            min-height: 720px;
 
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
 
-            text-align: center;
-
-            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
 
             background:
                 radial-gradient(
-                    circle at center,
-                    #01244E 0%,
-                    #010D1B 65%
+                    circle at 50% 35%,
+                    rgba(0, 217, 255, 0.10),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    180deg,
+                    #021a32 0%,
+                    #010b17 100%
                 );
         }
 
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            width: 600px;
+            height: 600px;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: rgba(0, 217, 255, 0.035);
+            filter: blur(50px);
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+
+            padding: 80px 0;
+        }
+
         .hero-logo {
-            width: min(850px, 90%);
-            height: auto;
+            width: min(600px, 90%);
+            max-height: 230px;
 
-            margin-bottom: 45px;
+            object-fit: contain;
 
-            border-radius: 12px;
+            margin-bottom: 35px;
+
+            filter:
+                drop-shadow(0 0 25px rgba(0, 217, 255, 0.10));
         }
 
         .hero h1 {
-            font-size: clamp(36px, 5vw, 64px);
-            margin: 0 0 20px;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.1;
 
-            letter-spacing: 1px;
+            margin-bottom: 20px;
+
+            letter-spacing: -1.5px;
         }
 
-        .hero p {
-            max-width: 700px;
+        .hero h1 span {
+            color: #00d9ff;
+        }
 
-            font-size: 20px;
-            line-height: 1.6;
+        .hero-subtitle {
+            max-width: 720px;
+            margin: 0 auto 35px;
 
-            color: #B8C8D8;
+            color: #b9cede;
+
+            font-size: clamp(17px, 2vw, 20px);
+        }
+
+        .hero-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 10px 18px;
+
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 100px;
+
+            background: rgba(0, 217, 255, 0.05);
+
+            color: #00d9ff;
+
+            font-size: 14px;
+            font-weight: 600;
 
             margin-bottom: 35px;
         }
 
-        .button {
-            display: inline-block;
+        .hero-highlight::before {
+            content: "";
+            width: 7px;
+            height: 7px;
 
-            padding: 15px 30px;
+            border-radius: 50%;
+            background: #00d9ff;
+
+            box-shadow: 0 0 10px #00d9ff;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 13px 25px;
 
             border-radius: 8px;
 
-            background: #007BFF;
-            color: white;
-
             text-decoration: none;
-            font-weight: bold;
 
-            transition: 0.2s;
+            font-weight: 600;
+            font-size: 15px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
-        .button:hover {
-            background: #00C8FF;
+        .button-primary {
+            background: #00d9ff;
+            color: #00111d;
+
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.18);
+        }
+
+        .button-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(0, 217, 255, 0.30);
         }
 
 
-        /* SERVICES */
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
 
-        .section {
-            padding: 100px 8%;
+        section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
             text-align: center;
-            background: #010D1B;
+            max-width: 720px;
+
+            margin: 0 auto 55px;
         }
 
-        .section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
+        .section-heading h2 {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 15px;
+
+            letter-spacing: -0.8px;
         }
 
-        .section-intro {
-            max-width: 700px;
-            margin: 0 auto 60px;
-
-            color: #AEBECD;
-            font-size: 18px;
-            line-height: 1.6;
+        .section-heading p {
+            color: #9fb4c7;
+            font-size: 17px;
         }
 
-        .cards {
+        .eyebrow {
+            color: #00d9ff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background: #010b17;
+        }
+
+        .service-grid {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(4, 30, 54, 0.95),
+                    rgba(2, 19, 35, 0.95)
+                );
+
+            border: 1px solid rgba(0, 217, 255, 0.12);
+            border-radius: 14px;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(0, 217, 255, 0.45);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25),
+                0 0 25px rgba(0, 217, 255, 0.06);
+        }
+
+        .service-number {
+            color: #00d9ff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #a9bdcf;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CERTIFICATIONS
+        ========================= */
+
+        .certifications {
+            background:
+                linear-gradient(
+                    180deg,
+                    #02172c 0%,
+                    #010f1f 100%
+                );
+        }
+
+        .cert-grid {
+            max-width: 1050px;
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 24px;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: center;
 
             gap: 25px;
 
-            max-width: 1100px;
-            margin: auto;
+            padding: 25px;
+
+            background: rgba(2, 27, 50, 0.75);
+
+            border: 1px solid rgba(0, 217, 255, 0.13);
+            border-radius: 15px;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        .card {
+        .cert-card:hover {
+            transform: translateY(-4px);
+
+            border-color: rgba(0, 217, 255, 0.55);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.25),
+                0 0 25px rgba(0, 217, 255, 0.08);
+        }
+
+        .cert-card.featured {
+            border-color: rgba(0, 217, 255, 0.35);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 55, 82, 0.35),
+                    rgba(2, 27, 50, 0.8)
+                );
+        }
+
+        .cert-card img {
+            width: 115px;
+            height: 115px;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+        }
+
+        .cert-info h3 {
+            font-size: 18px;
+            line-height: 1.3;
+
+            margin-bottom: 8px;
+        }
+
+        .cert-info p {
+            color: #00d9ff;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cert-info small {
+            display: block;
+
+            color: #829aae;
+
+            margin-top: 7px;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background: #010b17;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: clamp(30px, 4vw, 42px);
+
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            color: #a9bdcf;
+
+            margin-bottom: 18px;
+
+            font-size: 16px;
+        }
+
+        .about-content strong {
+            color: #ffffff;
+        }
+
+        .expertise-box {
             padding: 35px;
 
-            background: #021A32;
+            background:
+                linear-gradient(
+                    145deg,
+                    #021b32,
+                    #031426
+                );
 
-            border: 1px solid rgba(0, 200, 255, 0.12);
-            border-radius: 12px;
+            border-radius: 15px;
 
-            text-align: left;
+            border: 1px solid rgba(0, 217, 255, 0.16);
         }
 
-        .card h3 {
-            color: #00D9FF;
-            margin-top: 0;
+        .expertise-box h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
         }
 
-        .card p {
-            color: #AEBECD;
-            line-height: 1.6;
+        .expertise-list {
+            list-style: none;
+        }
+
+        .expertise-list li {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            color: #b6c8d8;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .expertise-list li:last-child {
+            border-bottom: none;
+        }
+
+        .expertise-list li::before {
+            content: "✓";
+
+            color: #00d9ff;
+
+            font-weight: 700;
         }
 
 
-        /* FOOTER */
+        /* =========================
+           EXPERIENCE
+        ========================= */
+
+        .experience {
+            background: #021426;
+        }
+
+        .experience-card {
+            max-width: 950px;
+            margin: 0 auto;
+
+            padding: 45px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(2, 35, 60, 0.9),
+                    rgba(1, 18, 33, 0.95)
+                );
+
+            border: 1px solid rgba(0, 217, 255, 0.15);
+        }
+
+        .experience-label {
+            color: #00d9ff;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .experience-card h3 {
+            font-size: 27px;
+            margin-bottom: 6px;
+        }
+
+        .experience-meta {
+            color: #8199ad;
+            margin-bottom: 25px;
+        }
+
+        .experience-card p {
+            color: #a9bdcf;
+            margin-bottom: 18px;
+        }
+
+        .experience-points {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px 35px;
+
+            margin-top: 25px;
+        }
+
+        .experience-points div {
+            color: #c1d0dc;
+            font-size: 15px;
+        }
+
+        .experience-points div::before {
+            content: "→";
+
+            color: #00d9ff;
+
+            margin-right: 9px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 217, 255, 0.07),
+                    transparent 55%
+                ),
+                #010b17;
+
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .contact-box h2 {
+            font-size: clamp(32px, 4vw, 44px);
+
+            margin-bottom: 18px;
+        }
+
+        .contact-box > p {
+            color: #a9bdcf;
+
+            font-size: 17px;
+
+            margin-bottom: 35px;
+        }
+
+        .contact-links {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+        .contact-email {
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            background: #021b32;
+
+            border: 1px solid rgba(0, 217, 255, 0.18);
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .contact-email:hover {
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+
+        .linkedin-button {
+            width: 46px;
+            height: 46px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background: #021b32;
+
+            border: 1px solid rgba(0, 217, 255, 0.18);
+
+            color: #ffffff;
+
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .linkedin-button:hover {
+            color: #00d9ff;
+
+            border-color: #00d9ff;
+
+            transform: translateY(-2px);
+        }
+
+        .linkedin-button svg {
+            width: 23px;
+            height: 23px;
+
+            fill: currentColor;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            padding: 35px;
+            padding: 28px 0;
+
+            background: #010811;
+
+            border-top: 1px solid rgba(0, 217, 255, 0.08);
 
             text-align: center;
 
-            background: #010914;
-            color: #718397;
+            color: #61778b;
 
-            border-top: 1px solid rgba(0, 200, 255, 0.1);
+            font-size: 13px;
         }
 
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 800px) {
 
-            header {
-                padding: 0 20px;
+            .container {
+                width: min(100% - 30px, 1120px);
             }
 
             nav {
-                gap: 15px;
+                gap: 17px;
             }
 
             nav a {
-                font-size: 14px;
-            }
-
-            .header-logo {
-                width: 52px;
-                height: 52px;
+                font-size: 13px;
             }
 
             .hero {
-                padding-top: 60px;
+                min-height: 650px;
+            }
+
+            .hero-content {
+                padding: 65px 0;
             }
 
             .hero-logo {
-                width: 100%;
+                width: 92%;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+            .experience-points {
+                grid-template-columns: 1fr;
             }
         }
 
+
+        @media (max-width: 520px) {
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .nav-logo img {
+                width: 45px;
+                height: 45px;
+            }
+
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-highlight {
+                font-size: 12px;
+            }
+
+            .cert-card {
+                gap: 18px;
+                padding: 18px;
+            }
+
+            .cert-card img {
+                width: 82px;
+                height: 82px;
+            }
+
+            .cert-info h3 {
+                font-size: 15px;
+            }
+
+            .experience-card {
+                padding: 28px 22px;
+            }
+
+            .contact-links {
+                flex-direction: row;
+            }
+        }
     </style>
 </head>
 
 
 <body>
 
-<header>
 
-    <img
-        src="logo-square.png"
-        alt="ITIAM"
-        class="header-logo"
-    >
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <header>
 
-</header>
+        <div class="container nav">
 
+            <a href="#top" class="nav-logo">
+                <img
+                    src="logo-square.png"
+                    alt="ITIAM"
+                >
+            </a>
 
-<section class="hero">
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
-    <img
-        src="logo-banner1.png"
-        alt="ITIAM IAM Consulting"
-        class="hero-logo"
-    >
-
-    <h1>Identity & Access Management</h1>
-
-    <p>
-        Specialist IAM consulting for secure,
-        scalable and modern identity environments.
-    </p>
-
-    <a href="#contact" class="button">
-        Get in touch
-    </a>
-
-</section>
-
-
-<section id="services" class="section">
-
-    <h2>Services</h2>
-
-    <p class="section-intro">
-        ITIAM helps organisations design, implement and
-        operate modern Identity & Access Management solutions.
-    </p>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>Identity Management</h3>
-            <p>
-                Identity lifecycle management,
-                provisioning and governance.
-            </p>
         </div>
 
-        <div class="card">
-            <h3>Access Management</h3>
-            <p>
-                Secure access to applications,
-                systems and resources.
-            </p>
+    </header>
+
+
+
+    <main id="top">
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <img
+                        src="logo-banner.png"
+                        alt="ITIAM IAM Consulting"
+                        class="hero-logo"
+                    >
+
+                    <div class="hero-highlight">
+                        Senior expertise in One Identity Manager
+                    </div>
+
+                    <h1>
+                        Identity &amp;
+                        <span>Access Management</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Architecture. Implementation. Identity.
+                        Specialized consulting for secure, scalable and
+                        manageable IAM environments, with a strong focus on
+                        One Identity Manager.
+                    </p>
+
+                    <a
+                        href="#contact"
+                        class="button button-primary"
+                    >
+                        Let's connect
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
+
+        <section
+            id="services"
+            class="services"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        What I do
+                    </div>
+
+                    <h2>
+                        IAM expertise from architecture to implementation
+                    </h2>
+
+                    <p>
+                        Practical experience building and developing
+                        enterprise identity environments.
+                    </p>
+
+                </div>
+
+
+                <div class="service-grid">
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">
+                            01
+                        </div>
+
+                        <h3>
+                            One Identity Manager
+                        </h3>
+
+                        <p>
+                            Senior-level expertise in One Identity Manager,
+                            including architecture, implementation,
+                            configuration, customization, workflows,
+                            integrations and ongoing development.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">
+                            02
+                        </div>
+
+                        <h3>
+                            IAM Architecture
+                        </h3>
+
+                        <p>
+                            Designing identity and access solutions that
+                            connect people, systems, applications and
+                            organizational structures in a secure and
+                            manageable way.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Identity Lifecycle
+                        </h3>
+
+                        <p>
+                            Identity lifecycle management, joiner,
+                            mover and leaver processes, access management,
+                            organizational structures and automated
+                            provisioning.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service-card">
+
+                        <div class="service-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Implementation &amp; Integration
+                        </h3>
+
+                        <p>
+                            From requirements and solution architecture
+                            through technical implementation, automation
+                            and integration with surrounding systems.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CERTIFICATIONS
+        ========================== -->
+
+        <section
+            id="certifications"
+            class="certifications"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        Certifications
+                    </div>
+
+                    <h2>
+                        One Identity certifications
+                    </h2>
+
+                    <p>
+                        Professional certifications focused on Identity
+                        &amp; Access Management and the One Identity platform.
+                    </p>
+
+                </div>
+
+
+                <div class="cert-grid">
+
+
+                    <!-- IMPLEMENTATION PROFESSIONAL -->
+
+                    <a
+                        href="https://www.credly.com/badges/4ad4a26f-c762-4f95-980b-5914c1b18eb0/linked_in_profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cert-card featured"
+                    >
+
+                        <img
+                            src="https://images.credly.com/images/53f5b549-8bcd-4259-97ff-3484fa3d3a7f/image.png"
+                            alt="Identity Manager Implementation Professional"
+                        >
+
+                        <div class="cert-info">
+
+                            <h3>
+                                Identity Manager
+                                Implementation Professional
+                            </h3>
+
+                            <p>
+                                One Identity · Advanced
+                            </p>
+
+                            <small>
+                                Verify certification on Credly →
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- SAFEGUARD -->
+
+                    <a
+                        href="https://www.credly.com/badges/97ba5604-0293-47b2-851d-d6a84b472a22/linked_in_profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cert-card"
+                    >
+
+                        <img
+                            src="https://images.credly.com/images/afe25f5e-87d2-40ba-a58e-60252840febf/image.png"
+                            alt="Safeguard Technical Specialist"
+                        >
+
+                        <div class="cert-info">
+
+                            <h3>
+                                Safeguard Technical Specialist
+                            </h3>
+
+                            <p>
+                                One Identity
+                            </p>
+
+                            <small>
+                                Verify certification on Credly →
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- IDENTITY MANAGER TECHNICAL -->
+
+                    <a
+                        href="https://www.credly.com/badges/6dad3cea-c9bc-4afc-aa4f-914210e2ab4d/linked_in_profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cert-card"
+                    >
+
+                        <img
+                            src="https://images.credly.com/images/12cc243a-6edb-4e03-9b84-3915b07c7c54/image.png"
+                            alt="Identity Manager Technical Specialist"
+                        >
+
+                        <div class="cert-info">
+
+                            <h3>
+                                Identity Manager
+                                Technical Specialist
+                            </h3>
+
+                            <p>
+                                One Identity
+                            </p>
+
+                            <small>
+                                Verify certification on Credly →
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- ONELOGIN -->
+
+                    <a
+                        href="https://www.credly.com/badges/d87a87e0-144c-40fd-9d7a-b394f14f465d/linked_in_profile"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cert-card"
+                    >
+
+                        <img
+                            src="https://images.credly.com/images/139f69e4-8bf3-4612-8ed3-1a078a68dba0/image.png"
+                            alt="OneLogin Technical Specialist"
+                        >
+
+                        <div class="cert-info">
+
+                            <h3>
+                                OneLogin Technical Specialist
+                            </h3>
+
+                            <p>
+                                One Identity
+                            </p>
+
+                            <small>
+                                Verify certification on Credly →
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section
+            id="about"
+            class="about"
+        >
+
+            <div class="container">
+
+                <div class="about-grid">
+
+
+                    <div class="about-content">
+
+                        <div class="eyebrow">
+                            About ITIAM
+                        </div>
+
+                        <h2>
+                            Identity is at the heart of modern IT.
+                        </h2>
+
+                        <p>
+                            ITIAM provides specialized Identity &amp;
+                            Access Management consulting focused on
+                            building secure, scalable and maintainable
+                            identity environments.
+                        </p>
+
+                        <p>
+                            <strong>
+                                Philip Benjaminsson
+                            </strong>
+                            is an IAM consultant and solution architect
+                            with hands-on experience in enterprise IAM
+                            implementations.
+                        </p>
+
+                        <p>
+                            The strongest area of specialization is
+                            <strong>
+                                One Identity Manager
+                            </strong>,
+                            covering architecture, implementation,
+                            customization, integrations, identity
+                            lifecycle management and access management.
+                        </p>
+
+                    </div>
+
+
+                    <div class="expertise-box">
+
+                        <h3>
+                            Core expertise
+                        </h3>
+
+                        <ul class="expertise-list">
+
+                            <li>
+                                One Identity Manager
+                            </li>
+
+                            <li>
+                                IAM Architecture
+                            </li>
+
+                            <li>
+                                Identity Lifecycle Management
+                            </li>
+
+                            <li>
+                                Access Management
+                            </li>
+
+                            <li>
+                                Enterprise IAM Implementation
+                            </li>
+
+                            <li>
+                                System Integration &amp; Automation
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
+
+        <section class="experience">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        Experience
+                    </div>
+
+                    <h2>
+                        Enterprise IAM implementation
+                    </h2>
+
+                    <p>
+                        Practical experience taking IAM solutions
+                        from architecture to working implementation.
+                    </p>
+
+                </div>
+
+
+                <div class="experience-card">
+
+                    <div class="experience-label">
+                        Selected project
+                    </div>
+
+                    <h3>
+                        One Identity Manager implementation
+                    </h3>
+
+                    <div class="experience-meta">
+                        Region Halland · Healthcare
+                    </div>
+
+                    <p>
+                        Solution architecture and technical implementation
+                        of One Identity Manager as part of a large-scale
+                        implementation supporting approximately 14,000
+                        healthcare employees.
+                    </p>
+
+                    <p>
+                        The work included implementing identities,
+                        organizational structures, managers, access and
+                        lifecycle processes, together with the technical
+                        integration and development required to support
+                        the environment.
+                    </p>
+
+
+                    <div class="experience-points">
+
+                        <div>
+                            Identity implementation
+                        </div>
+
+                        <div>
+                            Organizational structures
+                        </div>
+
+                        <div>
+                            Access management
+                        </div>
+
+                        <div>
+                            Identity lifecycle
+                        </div>
+
+                        <div>
+                            One Identity Manager development
+                        </div>
+
+                        <div>
+                            Integration &amp; technical implementation
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section
+            id="contact"
+            class="contact"
+        >
+
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="eyebrow">
+                        Contact
+                    </div>
+
+                    <h2>
+                        Let's talk IAM.
+                    </h2>
+
+                    <p>
+                        Looking for expertise in One Identity Manager,
+                        IAM architecture or enterprise identity
+                        implementation?
+                        Get in touch.
+                    </p>
+
+
+                    <div class="contact-links">
+
+                        <a
+                            href="mailto:info@itiam.se"
+                            class="contact-email"
+                        >
+                            info@itiam.se
+                        </a>
+
+
+                        <!-- LinkedIn -->
+
+                        <a
+                            href="https://www.linkedin.com/in/philip-benjaminsson-642438a8/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="linkedin-button"
+                            aria-label="Philip Benjaminsson on LinkedIn"
+                            title="LinkedIn"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+
+                                <path d="
+                                    M20.45 20.45h-3.56v-5.57
+                                    c0-1.33-.03-3.04-1.85-3.04
+                                    -1.85 0-2.13 1.45-2.13 2.94v5.67
+                                    H9.35V8.99h3.42v1.56h.05
+                                    c.48-.9 1.64-1.85 3.37-1.85
+                                    3.61 0 4.28 2.38 4.28 5.48
+                                    v6.27z
+
+                                    M5.34 7.43
+                                    a2.07 2.07 0 1 1 0-4.14
+                                    2.07 2.07 0 0 1 0 4.14z
+
+                                    M7.12 20.45H3.56V8.99h3.56v11.46z
+                                "/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 ITIAM · Identity &amp; Access Management Consulting
+
         </div>
 
-        <div class="card">
-            <h3>IAM Architecture</h3>
-            <p>
-                Architecture, integrations and
-                long-term IAM strategy.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="about" class="section">
-
-    <h2>About ITIAM</h2>
-
-    <p class="section-intro">
-        ITIAM is an Identity & Access Management consultancy
-        focused on helping organisations build secure and
-        manageable identity environments.
-    </p>
-
-</section>
-
-
-<section id="contact" class="section">
-
-    <h2>Let's talk</h2>
-
-    <p class="section-intro">
-        Looking for help with Identity & Access Management?
-    </p>
-
-    <a
-        href="mailto:info@itiam.se"
-        class="button"
-    >
-        Contact ITIAM
-    </a>
-
-</section>
-
-
-<footer>
-    © 2026 ITIAM — IAM Consulting
-</footer>
+    </footer>
 
 
 </body>
