@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ITIAM | Identity & Access Management Consulting</title>
+<meta name="description" content="ITIAM provides Identity & Access Management consulting with a strong focus on One Identity Manager, IAM architecture, implementation and integration.">
+<link rel="icon" type="image/png" href="logo-square.png">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#010b17;color:#fff;line-height:1.6}
+a{color:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:0 auto}
+
+header{position:sticky;top:0;z-index:1000;background:rgba(1,15,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,217,255,.12)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo img{width:52px;height:52px;object-fit:contain}
+nav{display:flex;align-items:center;gap:30px}
+nav a{color:#d9e8f5;text-decoration:none;font-size:15px;font-weight:500;transition:color .2s}
+nav a:hover{color:#00d9ff}
+
+.language-selector{position:relative;margin-left:2px}
+.language-button{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(0,217,255,.18);border-radius:8px;background:rgba(0,217,255,.04);color:#d9e8f5;font:inherit;font-size:13px;cursor:pointer}
+.language-button:hover,.language-selector.open .language-button{border-color:rgba(0,217,255,.45);color:#00d9ff}
+.language-arrow{font-size:10px;transition:transform .2s}
+.language-selector.open .language-arrow{transform:rotate(180deg)}
+.language-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);min-width:145px;padding:6px;background:#031426;border:1px solid rgba(0,217,255,.2);border-radius:9px;box-shadow:0 15px 35px rgba(0,0,0,.35)}
+.language-selector.open .language-menu{display:block}
+.language-option{width:100%;display:flex;align-items:center;gap:9px;padding:9px 10px;border:0;border-radius:6px;background:transparent;color:#d9e8f5;text-align:left;font:inherit;font-size:13px;cursor:pointer}
+.language-option:hover{background:rgba(0,217,255,.08);color:#00d9ff}
+
+.hero{min-height:720px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(0,217,255,.10),transparent 40%),linear-gradient(180deg,#021a32 0%,#010b17 100%)}
+.hero:before{content:"";position:absolute;width:600px;height:600px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(0,217,255,.035);filter:blur(50px);pointer-events:none}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;margin:0 auto;padding:80px 0}
+.hero-logo{width:min(600px,90%);max-height:230px;object-fit:contain;margin-bottom:35px;filter:drop-shadow(0 0 25px rgba(0,217,255,.10))}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.1;margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 span{color:#00d9ff}
+.hero-subtitle{max-width:720px;margin:0 auto 35px;color:#b9cede;font-size:clamp(17px,2vw,20px)}
+.hero-highlight{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid rgba(0,217,255,.25);border-radius:100px;background:rgba(0,217,255,.05);color:#00d9ff;font-size:14px;font-weight:600;margin-bottom:22px}
+.hero-highlight:before{content:"";width:7px;height:7px;border-radius:50%;background:#00d9ff;box-shadow:0 0 10px #00d9ff}
+.partner-badge{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:13px 22px;margin-bottom:32px;border:1px solid rgba(0,217,255,.25);border-radius:12px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(0,217,255,.04));box-shadow:0 0 35px rgba(0,217,255,.05);text-align:left;transition:.25s}
+.partner-badge:hover{transform:translateY(-2px);border-color:rgba(0,217,255,.45);box-shadow:0 0 35px rgba(0,217,255,.1)}
+.partner-badge img{width:120px;max-width:120px;max-height:48px;object-fit:contain;flex-shrink:0}
+.partner-badge-text strong{display:block;color:#fff;font-size:14px;font-weight:700;line-height:1.3;margin-bottom:3px}
+.partner-badge-text span{display:block;color:#8fa8bb;font-size:12px;line-height:1.4}
+
+.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 25px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;transition:.2s}
+.button-primary{background:#00d9ff;color:#00111d;box-shadow:0 0 25px rgba(0,217,255,.18)}
+.button-primary:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(0,217,255,.3)}
+
+section{padding:100px 0}
+.section-heading{text-align:center;max-width:720px;margin:0 auto 55px}
+.section-heading h2{font-size:clamp(30px,4vw,42px);margin-bottom:15px;letter-spacing:-.8px}
+.section-heading p{color:#9fb4c7;font-size:17px}
+.eyebrow{color:#00d9ff;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+
+.partners{background:linear-gradient(180deg,#010f1f 0%,#021a2f 100%)}
+.partner-grid{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.partner-card{padding:35px;background:linear-gradient(145deg,rgba(4,30,54,.95),rgba(2,19,35,.95));border:1px solid rgba(0,217,255,.13);border-radius:15px;transition:.25s}
+.partner-card:hover{transform:translateY(-4px);border-color:rgba(0,217,255,.45);box-shadow:0 15px 40px rgba(0,0,0,.25),0 0 25px rgba(0,217,255,.06)}
+.partner-card.featured{border-color:rgba(0,217,255,.35);background:linear-gradient(145deg,rgba(0,45,70,.65),rgba(2,20,37,.95))}
+.partner-logo-wrapper{min-height:70px;display:flex;align-items:center;margin-bottom:25px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.07)}
+.partner-logo{width:190px;max-height:65px;object-fit:contain;object-position:left center}
+.partner-label{color:#00d9ff;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700;margin-bottom:10px}
+.partner-content h3{font-size:23px;margin-bottom:15px}
+.partner-content p{color:#a9bdcf;font-size:15px;margin-bottom:15px}
+.partner-link{display:inline-block;margin-top:8px;color:#00d9ff;text-decoration:none;font-size:14px;font-weight:600}
+.partner-link:hover{color:#fff}
+.partner-project-meta{color:#8199ad;font-size:14px;margin-bottom:22px}
+.partner-project-points{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 20px;margin-top:22px}
+.partner-project-points span{color:#c1d0dc;font-size:14px}
+.partner-project-points span:before{content:"→";color:#00d9ff;margin-right:8px}
+.project-tech-label{margin-top:28px;color:#8199ad;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px}
+.project-tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.project-tech span{padding:7px 10px;border-radius:7px;background:rgba(0,217,255,.045);border:1px solid rgba(0,217,255,.11);color:#b9cede;font-size:12px}
+
+.certifications{background:linear-gradient(180deg,#02172c 0%,#010f1f 100%)}
+.cert-grid{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.cert-card{display:flex;align-items:center;gap:25px;padding:25px;background:rgba(2,27,50,.75);border:1px solid rgba(0,217,255,.13);border-radius:15px;text-decoration:none;transition:.25s}
+.cert-card:hover{transform:translateY(-4px);border-color:rgba(0,217,255,.55);box-shadow:0 15px 35px rgba(0,0,0,.25),0 0 25px rgba(0,217,255,.08)}
+.cert-card.featured{border-color:rgba(0,217,255,.35);background:linear-gradient(145deg,rgba(0,55,82,.35),rgba(2,27,50,.8))}
+.cert-card img{width:115px;height:115px;object-fit:contain;flex-shrink:0}
+.cert-info h3{font-size:18px;line-height:1.3;margin-bottom:8px}
+.cert-info p{color:#00d9ff;font-size:14px;font-weight:600}
+.cert-info small{display:block;color:#829aae;margin-top:7px;font-size:13px}
+
+.about{background:#010b17}
+.about-intro{max-width:850px;margin:0 auto 55px;text-align:center}
+.about-intro p{color:#a9bdcf;font-size:17px;margin-bottom:18px}
+.about-intro strong,.about-content strong{color:#fff}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:stretch}
+.about-content{padding:35px;background:linear-gradient(145deg,rgba(4,30,54,.75),rgba(2,19,35,.75));border:1px solid rgba(0,217,255,.12);border-radius:15px}
+.about-content h3{font-size:22px;margin-bottom:20px}
+.about-content p{color:#a9bdcf;margin-bottom:18px;font-size:15px}
+.expertise-box{padding:35px;background:linear-gradient(145deg,#021b32,#031426);border-radius:15px;border:1px solid rgba(0,217,255,.16)}
+.expertise-box h3{font-size:20px;margin-bottom:25px}
+.expertise-list{list-style:none}
+.expertise-list li{display:flex;align-items:center;gap:12px;padding:12px 0;color:#b6c8d8;border-bottom:1px solid rgba(255,255,255,.06)}
+.expertise-list li:last-child{border-bottom:none}
+.expertise-list li:before{content:"✓";color:#00d9ff;font-weight:700}
+
+.contact{background:radial-gradient(circle at center,rgba(0,217,255,.07),transparent 55%),#010b17;text-align:center}
+.contact-box{max-width:750px;margin:0 auto}
+.contact-box h2{font-size:clamp(32px,4vw,44px);margin-bottom:18px}
+.contact-box>p{color:#a9bdcf;font-size:17px;margin-bottom:25px}
+.contact-location{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-bottom:30px;padding:9px 17px;border:1px solid rgba(0,217,255,.16);border-radius:100px;background:rgba(0,217,255,.04);color:#b9cede;font-size:14px;font-weight:500}
+.contact-links{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap}
+.contact-email{padding:13px 22px;border-radius:8px;background:#021b32;border:1px solid rgba(0,217,255,.18);color:#fff;text-decoration:none;transition:.2s}
+.contact-email:hover{border-color:#00d9ff;color:#00d9ff}
+.contact-email{width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.contact-email svg{width:22px;height:22px;fill:currentColor}
+.linkedin-button{width:46px;height:46px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:#021b32;border:1px solid rgba(0,217,255,.18);color:#fff;transition:.2s}
+.linkedin-button:hover{color:#00d9ff;border-color:#00d9ff;transform:translateY(-2px)}
+.linkedin-button svg{width:23px;height:23px;fill:currentColor}
+
+footer{padding:28px 0;background:#010811;border-top:1px solid rgba(0,217,255,.08);text-align:center;color:#61778b;font-size:13px}
+
+@media(max-width:900px){
+nav{gap:18px}nav a{font-size:13px}
+}
+@media(max-width:800px){
+.container{width:min(100% - 30px,1120px)}
+.nav{min-height:70px}
+nav{gap:14px}
+nav a{font-size:12px}
+.hero{min-height:650px}
+.hero-content{padding:65px 0}
+.hero-logo{width:92%}
+section{padding:75px 0}
+.partner-grid,.cert-grid,.about-grid{grid-template-columns:1fr}
+.about-grid{gap:25px}
+.partner-project-points{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+.project-tech{gap:6px}
+.project-tech span{font-size:11px;padding:6px 8px}
+.nav{min-height:68px}.nav-logo img{width:45px;height:45px}
+nav{gap:8px}nav a{font-size:10px}
+.hero h1{font-size:35px}.hero-subtitle{font-size:16px}.hero-highlight{font-size:12px}
+.partner-badge{gap:12px;padding:10px 14px;width:100%;max-width:350px}
+.partner-badge img{width:90px;max-width:90px}
+.partner-badge-text strong{font-size:12px}.partner-badge-text span{font-size:10px}
+.cert-card{gap:18px;padding:18px}.cert-card img{width:82px;height:82px}.cert-info h3{font-size:15px}
+.about-content,.expertise-box{padding:26px 22px}
+.language-button{padding:6px 8px;font-size:11px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="#top" class="nav-logo">
+<img src="logo-square.png" alt="ITIAM">
+</a>
+
+<nav>
+
+<a href="#partners" data-i18n="navPartners">Partners &amp; Projects</a>
+<a href="#certifications" data-i18n="navCertifications">Certifications</a>
+<a href="#about" data-i18n="navAbout">About</a>
+<a href="#contact" data-i18n="navContact">Contact</a>
+
+<div class="language-selector" id="languageSelector">
+
+<button class="language-button" id="languageButton" type="button" aria-expanded="false">
+<span id="currentFlag">🇬🇧</span>
+<span id="currentLanguage">EN</span>
+<span class="language-arrow">▼</span>
+</button>
+
+<div class="language-menu">
+
+<button class="language-option" type="button" data-language="en">
+🇬🇧 <span>English</span>
+</button>
+
+<button class="language-option" type="button" data-language="sv">
+🇸🇪 <span>Svenska</span>
+</button>
+
+</div>
+</div>
+
+</nav>
+</div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+
+<img src="logo-banner.png" alt="ITIAM IAM Consulting" class="hero-logo">
+
+<div class="hero-highlight" data-i18n="heroHighlight">
+Senior expertise in One Identity Manager
+</div>
+
+<div class="partner-badge">
+
+<img src="one-identity-logo.png" alt="One Identity">
+
+<div class="partner-badge-text">
+<strong data-i18n="partnerBadgeTitle">Verified One Identity Partner</strong>
+<span data-i18n="partnerBadgeText">Professional Identity &amp; Access Management expertise</span>
+</div>
+
+</div>
+
+<h1>
+<span data-i18n="heroIdentity">Identity &amp;</span>
+<span data-i18n="heroAccess">Access Management</span>
+</h1>
+
+<p class="hero-subtitle" data-i18n="heroSubtitle">
+Architecture. Implementation. Identity.
+Specialized consulting for secure, scalable and manageable IAM environments,
+with a strong focus on One Identity Manager.
+</p>
+
+<a href="#contact" class="button button-primary" data-i18n="heroButton">
+Let's connect
+</a>
+
+</div>
+</div>
+</section>
+
+<section id="partners" class="partners">
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow" data-i18n="partnersEyebrow">Partners &amp; Projects</div>
+<h2 data-i18n="partnersTitle">Verified One Identity Partner with Senior Expertise</h2>
+<p data-i18n="partnersIntro">
+Combining certified platform knowledge, enterprise experience and a verified partnership with One Identity.
+</p>
+</div>
+
+<div class="partner-grid">
+
+<article class="partner-card featured">
+
+<div class="partner-logo-wrapper">
+<img src="one-identity-logo.png" alt="One Identity" class="partner-logo">
+</div>
+
+<div class="partner-content">
+
+<div class="partner-label" data-i18n="partnerLabel">Technology Partner</div>
+
+<h3 data-i18n="partnerTitle">Verified One Identity Partner with Senior Expertise</h3>
+
+<p data-i18n="partnerText1">
+ITIAM is a verified partner of One Identity, combining certified platform knowledge with practical experience delivering enterprise Identity &amp; Access Management solutions.
+</p>
+
+<p data-i18n="partnerText2">
+The partnership complements ITIAM's strong specialization in One Identity Manager, including architecture, implementation, development, integration and identity lifecycle management.
+</p>
+
+<a href="https://www.oneidentity.com/products/identity-manager/" target="_blank" rel="noopener noreferrer" class="partner-link" data-i18n="partnerLink">
+Learn more about One Identity Manager →
+</a>
+
+</div>
+</article>
+
+<article class="partner-card">
+
+<div class="partner-content">
+
+<div class="partner-label" data-i18n="projectLabel">Selected Project</div>
+
+<h3 data-i18n="projectTitle">Enterprise IAM Implementation</h3>
+
+<div class="partner-project-meta">One Identity Manager · Region Halland</div>
+
+<p data-i18n="projectText">
+Solution architecture and technical implementation of One Identity Manager as part of a large-scale healthcare implementation supporting approximately 14,000 employees.
+</p>
+
+<div class="partner-project-points">
+<span data-i18n="projectPoint1">Identity implementation</span>
+<span data-i18n="projectPoint2">Organizational structures</span>
+<span data-i18n="projectPoint3">Access management</span>
+<span data-i18n="projectPoint4">Identity lifecycle</span>
+<span data-i18n="projectPoint5">One Identity Manager development</span>
+<span data-i18n="projectPoint6">Integration &amp; automation</span>
+</div>
+
+<div class="project-tech-label" data-i18n="projectTechLabel">Implementation &amp; Integration</div>
+<div class="project-tech">
+<span>LDAP</span>
+<span>Active Directory</span>
+<span>CSV / XLSX / JSON</span>
+<span>SCIM</span>
+<span>SQL</span>
+<span>One Identity</span>
+<span>Generic</span>
+<span>API scripting</span>
+</div>
+
+</div>
+</article>
+
+<article class="partner-card">
+
+<div class="partner-content">
+
+<div class="partner-label" data-i18n="projectLabel">Selected Project</div>
+
+<h3 data-i18n="projectVasternorrlandTitle">One Identity Manager Implementation</h3>
+
+<div class="partner-project-meta">One Identity Manager · Region Västernorrland</div>
+
+<p data-i18n="projectVasternorrlandText">
+Implementation of One Identity Manager for Region Västernorrland, delivered during my time at Anytrust.
+</p>
+
+<div class="partner-project-points">
+<span data-i18n="projectVasternorrlandPoint1">One Identity Manager implementation</span>
+<span data-i18n="projectVasternorrlandPoint2">IAM solution delivery</span>
+<span data-i18n="projectVasternorrlandPoint3">Technical configuration</span>
+<span data-i18n="projectVasternorrlandPoint4">Integration &amp; development</span>
+</div>
+
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="certifications" class="certifications">
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow" data-i18n="certEyebrow">Certifications</div>
+<h2 data-i18n="certTitle">One Identity certifications</h2>
+<p data-i18n="certIntro">
+Professional certifications focused on Identity &amp; Access Management and the One Identity platform.
+</p>
+</div>
+
+<div class="cert-grid">
+
+<a href="https://www.credly.com/badges/4ad4a26f-c762-4f95-980b-5914c1b18eb0/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-card featured">
+<img src="https://images.credly.com/images/53f5b549-8bcd-4259-97ff-3484fa3d3a7f/image.png" alt="Identity Manager Implementation Professional">
+<div class="cert-info">
+<h3>Identity Manager Implementation Professional</h3>
+<p>One Identity · Advanced</p>
+<small data-i18n="verifyCredly">Verify certification on Credly →</small>
+</div>
+</a>
+
+<a href="https://www.credly.com/badges/97ba5604-0293-47b2-851d-d6a84b472a22/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-card">
+<img src="https://images.credly.com/images/afe25f5e-87d2-40ba-a58e-60252840febf/image.png" alt="Safeguard Technical Specialist">
+<div class="cert-info">
+<h3>Safeguard Technical Specialist</h3>
+<p>One Identity</p>
+<small data-i18n="verifyCredly">Verify certification on Credly →</small>
+</div>
+</a>
+
+<a href="https://www.credly.com/badges/6dad3cea-c9bc-4afc-aa4f-914210e2ab4d/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-card">
+<img src="https://images.credly.com/images/12cc243a-6edb-4e03-9b84-3915b07c7c54/image.png" alt="Identity Manager Technical Specialist">
+<div class="cert-info">
+<h3>Identity Manager Technical Specialist</h3>
+<p>One Identity</p>
+<small data-i18n="verifyCredly">Verify certification on Credly →</small>
+</div>
+</a>
+
+<a href="https://www.credly.com/badges/d87a87e0-144c-40fd-9d7a-b394f14f465d/linked_in_profile" target="_blank" rel="noopener noreferrer" class="cert-card">
+<img src="https://images.credly.com/images/139f69e4-8bf3-4612-8ed3-1a078a68dba0/image.png" alt="OneLogin Technical Specialist">
+<div class="cert-info">
+<h3>OneLogin Technical Specialist</h3>
+<p>One Identity</p>
+<small data-i18n="verifyCredly">Verify certification on Credly →</small>
+</div>
+</a>
+
+</div>
+</div>
+</section>
+
+<section id="about" class="about">
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow" data-i18n="aboutEyebrow">About ITIAM</div>
+<h2 data-i18n="aboutTitle">Identity is at the heart of modern IT.</h2>
+<p data-i18n="aboutIntroHeading">
+Specialized Identity &amp; Access Management consulting from architecture through implementation.
+</p>
+</div>
+
+<div class="about-intro">
+
+<p data-i18n="aboutIntro1">
+ITIAM provides specialized Identity &amp; Access Management consulting focused on building secure, scalable and maintainable identity environments.
+</p>
+
+<p data-i18n="aboutIntro2">
+Founded by <strong>Philip Benjaminsson</strong>, ITIAM combines hands-on enterprise IAM experience with a strong specialization in <strong>One Identity Manager</strong>.
+</p>
+
+</div>
+
+<div class="about-grid">
+
+<div class="about-content">
+
+<div class="eyebrow" data-i18n="whatEyebrow">What we do</div>
+
+<h3 data-i18n="whatTitle">
+IAM expertise from architecture to implementation
+</h3>
+
+<p data-i18n="whatText1">
+We work with Identity &amp; Access Management solutions across the full journey from requirements and architecture to technical implementation, integration and ongoing development.
+</p>
+
+<p data-i18n="whatText2">
+Our strongest area of specialization is <strong>One Identity Manager</strong>, with expertise spanning architecture, configuration, customization, workflows, development, integrations and identity lifecycle management.
+</p>
+
+<p data-i18n="whatText3">
+This includes designing solutions that connect people, systems, applications and organizational structures in a secure and manageable way.
+</p>
+
+<p data-i18n="whatText4">
+We also work with joiner, mover and leaver processes, access management, automated provisioning and the integration of IAM with surrounding enterprise systems.
+</p>
+
+</div>
+
+<div class="expertise-box">
+
+<h3 data-i18n="expertiseTitle">Core expertise</h3>
+
+<ul class="expertise-list">
+<li data-i18n="expertise1">One Identity Manager</li>
+<li data-i18n="expertise2">IAM Architecture</li>
+<li data-i18n="expertise3">Identity Lifecycle Management</li>
+<li data-i18n="expertise4">Access Management</li>
+<li data-i18n="expertise5">Enterprise IAM Implementation</li>
+<li data-i18n="expertise6">System Integration &amp; Automation</li>
+<li data-i18n="expertise7">Workflow &amp; Process Development</li>
+<li data-i18n="expertise8">Identity Governance</li>
+</ul>
+
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="container">
+
+<div class="contact-box">
+
+<div class="eyebrow" data-i18n="contactEyebrow">Contact</div>
+
+<h2 data-i18n="contactTitle">Let's talk IAM.</h2>
+
+<p data-i18n="contactText">
+Looking for expertise in One Identity Manager, IAM architecture or enterprise identity implementation? Get in touch.
+</p>
+
+<div class="contact-location">
+<span class="contact-location-icon">🇸🇪</span>
+<span data-i18n="location">Based in Sweden</span>
+</div>
+
+<div class="contact-links">
+
+<a href="mailto:info@itiam.se" class="contact-email" aria-label="Email ITIAM" title="Email ITIAM">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M2.5 5.5A2.5 2.5 0 0 1 5 3h14a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 19 21H5a2.5 2.5 0 0 1-2.5-2.5v-13Zm2.2.1 6.5 5.15a1.25 1.25 0 0 0 1.6 0l6.5-5.15A.5.5 0 0 0 19 5H5a.5.5 0 0 0-.3.6Zm15.3 2.05-5.95 4.7a3.25 3.25 0 0 1-4.1 0L4 7.65v10.85c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V7.65Z"/>
+</svg>
+</a>
+
+<a href="https://www.linkedin.com/in/philip-benjaminsson-642438a8/" target="_blank" rel="noopener noreferrer" class="linkedin-button" aria-label="Philip Benjaminsson on LinkedIn" title="LinkedIn">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.48v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V8.99h3.56v11.46z"/>
+</svg>
+</a>
+
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container" data-i18n="footer">
+© 2026 ITIAM · Identity &amp; Access Management Consulting
+</div>
+</footer>
+
+<script>
+const translations = {
+en: {
+navPartners:"Partners & Projects",
+navCertifications:"Certifications",
+navAbout:"About",
+navContact:"Contact",
+heroHighlight:"Senior expertise in One Identity Manager",
+partnerBadgeTitle:"Verified One Identity Partner",
+partnerBadgeText:"Professional Identity & Access Management expertise",
+heroIdentity:"Identity &",
+heroAccess:"Access Management",
+heroSubtitle:"Architecture. Implementation. Identity. Specialized consulting for secure, scalable and manageable IAM environments, with a strong focus on One Identity Manager.",
+heroButton:"Contact",
+partnersEyebrow:"Partners & Projects",
+partnersTitle:"Verified One Identity Partner with Senior Expertise",
+partnersIntro:"Combining certified platform knowledge, enterprise experience and a verified partnership with One Identity.",
+partnerLabel:"Technology Partner",
+partnerTitle:"Verified One Identity Partner with Senior Expertise",
+partnerText1:"ITIAM is a verified partner of One Identity, combining certified platform knowledge with practical experience delivering enterprise Identity & Access Management solutions.",
+partnerText2:"The partnership complements ITIAM's strong specialization in One Identity Manager, including architecture, implementation, development, integration and identity lifecycle management.",
+partnerLink:"Learn more about One Identity Manager →",
+projectLabel:"Selected Project",
+projectTitle:"Enterprise IAM Implementation",
+projectText:"Solution architecture and technical implementation of One Identity Manager as part of a large-scale healthcare implementation supporting approximately 14,000 employees.",
+projectPoint1:"Identity implementation",
+projectPoint2:"Organizational structures",
+projectPoint3:"Access management",
+projectPoint4:"Identity lifecycle",
+projectPoint5:"One Identity Manager development",
+projectPoint6:"Integration & automation",
+projectTechLabel:"Implementation & Integration",
+projectVasternorrlandTitle:"One Identity Manager Implementation",
+projectVasternorrlandText:"Implementation of One Identity Manager for Region Västernorrland, delivered during Philip Benjaminsson's time at Anytrust.",
+projectVasternorrlandPoint1:"One Identity Manager implementation",
+projectVasternorrlandPoint2:"IAM solution delivery",
+projectVasternorrlandPoint3:"Technical configuration",
+projectVasternorrlandPoint4:"Integration & development",
+certEyebrow:"Certifications",
+certTitle:"One Identity certifications",
+certIntro:"Professional certifications focused on Identity & Access Management and the One Identity platform.",
+verifyCredly:"Verify certification on Credly →",
+aboutEyebrow:"About ITIAM",
+aboutTitle:"Identity is at the heart of modern IT.",
+aboutIntroHeading:"Specialized Identity & Access Management consulting from architecture through implementation.",
+aboutIntro1:"ITIAM provides specialized Identity & Access Management consulting focused on building secure, scalable and maintainable identity environments.",
+aboutIntro2:"Founded by <strong>Philip Benjaminsson</strong>, ITIAM combines hands-on enterprise IAM experience with a strong specialization in <strong>One Identity Manager</strong>.",
+whatEyebrow:"What we do",
+whatTitle:"IAM expertise from architecture to implementation",
+whatText1:"We work with Identity & Access Management solutions across the full journey from requirements and architecture to technical implementation, integration and ongoing development.",
+whatText2:"Our strongest area of specialization is <strong>One Identity Manager</strong>, with expertise spanning architecture, configuration, customization, workflows, development, integrations and identity lifecycle management.",
+whatText3:"This includes designing solutions that connect people, systems, applications and organizational structures in a secure and manageable way.",
+whatText4:"We also work with joiner, mover and leaver processes, access management, automated provisioning and the integration of IAM with surrounding enterprise systems.",
+expertiseTitle:"Core expertise",
+expertise1:"One Identity Manager",
+expertise2:"IAM Architecture",
+expertise3:"Identity Lifecycle Management",
+expertise4:"Access Management",
+expertise5:"Enterprise IAM Implementation",
+expertise6:"System Integration & Automation",
+expertise7:"Workflow & Process Development",
+expertise8:"Identity Governance",
+contactEyebrow:"Contact",
+contactTitle:"Let's talk IAM.",
+contactText:"Looking for expertise in One Identity Manager, IAM architecture or enterprise identity implementation? Get in touch.",
+location:"Based in Sweden",
+footer:"© 2026 ITIAM · Identity & Access Management Consulting"
+},
+sv: {
+navPartners:"Partners & Projekt",
+navCertifications:"Certifieringar",
+navAbout:"Om",
+navContact:"Kontakt",
+heroHighlight:"Senior kompetens inom One Identity Manager",
+partnerBadgeTitle:"Verifierad One Identity-partner",
+partnerBadgeText:"Professionell kompetens inom Identity & Access Management",
+heroIdentity:"Identity &",
+heroAccess:"Access Management",
+heroSubtitle:"Arkitektur. Implementation. Identitet. Specialistkonsulting för säkra, skalbara och lättförvaltade IAM-miljöer, med starkt fokus på One Identity Manager.",
+heroButton:"Kontakt",
+partnersEyebrow:"Partners & Projekt",
+partnersTitle:"Verifierad One Identity-partner med senior kompetens",
+partnersIntro:"En kombination av certifierad plattformskompetens, erfarenhet från enterprise-miljöer och ett verifierat partnerskap med One Identity.",
+partnerLabel:"Teknikpartner",
+partnerTitle:"Verifierad One Identity-partner med senior kompetens",
+partnerText1:"ITIAM är en verifierad partner till One Identity och kombinerar certifierad plattformskompetens med praktisk erfarenhet av att leverera enterprise-lösningar inom Identity & Access Management.",
+partnerText2:"Partnerskapet kompletterar ITIAM:s starka specialisering inom One Identity Manager, inklusive arkitektur, implementation, utveckling, integration och identitetslivscykelhantering.",
+partnerLink:"Läs mer om One Identity Manager →",
+projectLabel:"Utvalt projekt",
+projectTitle:"Enterprise IAM-implementation",
+projectText:"Lösningsarkitektur och teknisk implementation av One Identity Manager inom en storskalig implementation för hälso- och sjukvård med cirka 14 000 medarbetare.",
+projectPoint1:"Identitetsimplementation",
+projectPoint2:"Organisationsstrukturer",
+projectPoint3:"Åtkomsthantering",
+projectPoint4:"Identitetslivscykel",
+projectPoint5:"One Identity Manager-utveckling",
+projectPoint6:"Integration & automatisering",
+projectTechLabel:"Implementation & Integration",
+projectVasternorrlandTitle:"Implementation av One Identity Manager",
+projectVasternorrlandText:"Implementation av One Identity Manager för Region Västernorrland, genomförd under Philip Benjaminssons tid på Anytrust.",
+projectVasternorrlandPoint1:"Implementation av One Identity Manager",
+projectVasternorrlandPoint2:"Leverans av IAM-lösning",
+projectVasternorrlandPoint3:"Teknisk konfigurering",
+projectVasternorrlandPoint4:"Integration & utveckling",
+certEyebrow:"Certifieringar",
+certTitle:"One Identity-certifieringar",
+certIntro:"Professionella certifieringar med fokus på Identity & Access Management och One Identity-plattformen.",
+verifyCredly:"Verifiera certifiering på Credly →",
+aboutEyebrow:"Om ITIAM",
+aboutTitle:"Identitet är kärnan i modern IT.",
+aboutIntroHeading:"Specialistkonsulting inom Identity & Access Management – från arkitektur till implementation.",
+aboutIntro1:"ITIAM erbjuder specialistkonsulting inom Identity & Access Management med fokus på att bygga säkra, skalbara och lättförvaltade identitetsmiljöer.",
+aboutIntro2:"ITIAM grundades av <strong>Philip Benjaminsson</strong> och kombinerar praktisk erfarenhet från enterprise-IAM med en stark specialisering inom <strong>One Identity Manager</strong>.",
+whatEyebrow:"Vad vi gör",
+whatTitle:"IAM-kompetens från arkitektur till implementation",
+whatText1:"Vi arbetar med Identity & Access Management genom hela processen – från kravställning och arkitektur till teknisk implementation, integration och vidareutveckling.",
+whatText2:"Vårt främsta specialistområde är <strong>One Identity Manager</strong>, med kompetens inom arkitektur, konfiguration, anpassningar, workflows, utveckling, integrationer och identitetslivscykelhantering.",
+whatText3:"Det omfattar bland annat lösningar som kopplar samman personer, system, applikationer och organisationsstrukturer på ett säkert och lättförvaltat sätt.",
+whatText4:"Vi arbetar även med joiner-, mover- och leaver-processer, åtkomsthantering, automatiserad provisionering och integration av IAM med omkringliggande enterprise-system.",
+expertiseTitle:"Kärnkompetenser",
+expertise1:"One Identity Manager",
+expertise2:"IAM-arkitektur",
+expertise3:"Identitetslivscykelhantering",
+expertise4:"Åtkomsthantering",
+expertise5:"Enterprise IAM-implementation",
+expertise6:"Systemintegration & automatisering",
+expertise7:"Workflow- & processutveckling",
+expertise8:"Identity Governance",
+contactEyebrow:"Kontakt",
+contactTitle:"Låt oss prata IAM.",
+contactText:"Behöver du kompetens inom One Identity Manager, IAM-arkitektur eller enterprise-implementation? Hör gärna av dig.",
+location:"Baserad i Sverige",
+footer:"© 2026 ITIAM · Identity & Access Management Consulting"
+}
+};
+
+const languageSelector=document.getElementById("languageSelector");
+const languageButton=document.getElementById("languageButton");
+const currentFlag=document.getElementById("currentFlag");
+const currentLanguage=document.getElementById("currentLanguage");
+
+function setLanguage(lang){
+const t=translations[lang];
+document.documentElement.lang=lang;
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+const key=el.getAttribute("data-i18n");
+if(t[key]!==undefined) el.innerHTML=t[key];
+});
+
+currentFlag.textContent=lang==="sv"?"🇸🇪":"🇬🇧";
+currentLanguage.textContent=lang==="sv"?"SV":"EN";
+
+document.title=lang==="sv"
+?"ITIAM | Identity & Access Management-konsulting"
+:"ITIAM | Identity & Access Management Consulting";
+
+localStorage.setItem("itiam-language",lang);
+languageSelector.classList.remove("open");
+languageButton.setAttribute("aria-expanded","false");
+}
+
+languageButton.addEventListener("click",e=>{
+e.stopPropagation();
+const open=languageSelector.classList.toggle("open");
+languageButton.setAttribute("aria-expanded",open);
+});
+
+document.querySelectorAll(".language-option").forEach(option=>{
+option.addEventListener("click",()=>{
+setLanguage(option.dataset.language);
+});
+});
+
+document.addEventListener("click",e=>{
+if(!languageSelector.contains(e.target)){
+languageSelector.classList.remove("open");
+languageButton.setAttribute("aria-expanded","false");
+}
+});
+
+const savedLanguage=localStorage.getItem("itiam-language");
+setLanguage(savedLanguage==="sv"?"sv":"en");
+</script>
+
+</body>
+</html>
