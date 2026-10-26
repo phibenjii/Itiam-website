@@ -19,7 +19,7 @@ header{position:sticky;top:0;z-index:1000;background:rgba(1,15,31,.92);backdrop-
 .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-logo img{width:52px;height:52px;object-fit:contain}
-nav{display:flex;align-items:center;gap:30px}
+nav{display:flex;align-items:center;gap:8px} .nav>nav{flex:1;min-width:0;justify-content:flex-end}
 nav a{color:#d9e8f5;text-decoration:none;font-size:15px;font-weight:500;transition:color .2s}
 nav a:hover{color:#00d9ff}
 
@@ -182,7 +182,7 @@ header nav a.app-portal-link:hover{background:#65e8ff;color:#00111d}
 @media(min-width:601px){header nav a.nav-icon-link .nav-link-label{display:inline}}
 @media(max-width:600px){
 header .container.nav{position:relative}
-header nav{justify-content:space-between;gap:2px}
+header nav{justify-content:flex-end;gap:4px}
 header nav a.nav-icon-link{min-width:32px;min-height:34px;padding:5px;flex:0 0 auto}
 header nav a.nav-icon-link svg{width:18px;height:18px;flex-basis:18px}
 header nav a.nav-icon-link .nav-link-label{display:none}
