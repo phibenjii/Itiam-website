@@ -148,6 +148,13 @@ nav{gap:8px}nav a{font-size:10px}
 .about-content,.expertise-box{padding:26px 22px}
 .language-button{padding:6px 8px;font-size:11px}
 }
+
+/* ITIAM App portal shortcut */
+nav a.app-portal-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;border:1px solid rgba(0,217,255,.5);border-radius:8px;background:#00d9ff;color:#00111d;font-weight:700;white-space:nowrap;box-shadow:0 0 20px rgba(0,217,255,.09)}
+nav a.app-portal-link:hover{color:#00111d;background:#65e8ff;border-color:#65e8ff;transform:translateY(-1px)}
+@media(max-width:800px){nav a.app-portal-link{padding:8px 10px;font-size:11px}}
+@media(max-width:520px){nav a.app-portal-link{font-size:0;padding:8px 10px;gap:0}nav a.app-portal-link:after{content:"App";font-size:11px}}
+
 </style>
 </head>
 
@@ -166,6 +173,7 @@ nav{gap:8px}nav a{font-size:10px}
 <a href="#certifications" data-i18n="navCertifications">Certifications</a>
 <a href="#about" data-i18n="navAbout">About</a>
 <a href="#contact" data-i18n="navContact">Contact</a>
+<a href="https://app.itiam.se/" class="app-portal-link" aria-label="Gå till ITIAM App">Gå till ITIAM App <span aria-hidden="true">↗</span></a>
 
 <div class="language-selector" id="languageSelector">
 
